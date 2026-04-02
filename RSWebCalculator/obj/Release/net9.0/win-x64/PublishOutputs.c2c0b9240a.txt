@@ -1,5 +1,0 @@
-C:\Users\malte\Desktop\RS Calc\RSWebCalculator\bin\Release\net9.0\win-x64\publish\appsettings.Development.json
-C:\Users\malte\Desktop\RS Calc\RSWebCalculator\bin\Release\net9.0\win-x64\publish\appsettings.json
-C:\Users\malte\Desktop\RS Calc\RSWebCalculator\bin\Release\net9.0\win-x64\publish\RSWebCalculator.pdb
-C:\Users\malte\Desktop\RS Calc\RSWebCalculator\bin\Release\net9.0\win-x64\publish\aspnetcorev2_inprocess.dll
-C:\Users\malte\Desktop\RS Calc\RSWebCalculator\bin\Release\net9.0\win-x64\publish\RSWebCalculator.exe
