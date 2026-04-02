@@ -1,8 +1,17 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Tell the app to always use this specific local address and port
+const string appUrl = "http://localhost:5050";
+builder.WebHost.UseUrls(appUrl);
+
 var app = builder.Build();
 
 Dictionary<string, int> baseSignatures = new Dictionary<string, int>()
@@ -165,7 +174,7 @@ app.MapGet("/", () => Results.Content(@"
             const response = await fetch('/api/calc?val=' + val);
             const text = await response.text();
             
-            if(text.includes('No match')) {
+            if(text.includes('Oh no!')) {
                 resultDiv.className = 'error';
             }
             resultDiv.innerText = text;
@@ -193,6 +202,22 @@ app.MapGet("/api/calc", (int? val) =>
         }
     }
     return "Oh no! Ore not found. Misstyped?";
+});
+
+// 3. Automatically open the browser when the server starts
+app.Lifetime.ApplicationStarted.Register(() =>
+{
+    try
+    {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {appUrl}") { CreateNoWindow = true });
+        }
+    }
+    catch (Exception)
+    {
+        Console.WriteLine($"\nCould not automatically open browser. Please navigate to: {appUrl}\n");
+    }
 });
 
 app.Run();
