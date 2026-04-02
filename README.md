@@ -2,8 +2,4 @@ This is a simple web calculator for Star Citizen. It is used to calculate the RS
 
 Web application runs using local web server. To start the application, run the following command:
 
-dotnet run
-
-Then open http://localhost:(port) in your browser.
-
 GenAI used for styling the final web page.
